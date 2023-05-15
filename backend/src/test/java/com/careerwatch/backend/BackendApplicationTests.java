@@ -1,4 +1,4 @@
-package com.looking4job.backend;
+package com.careerwatch.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

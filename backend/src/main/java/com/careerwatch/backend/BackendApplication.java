@@ -1,4 +1,4 @@
-package com.looking4job.backend;
+package com.careerwatch.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
