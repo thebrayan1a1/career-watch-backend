@@ -1,7 +1,10 @@
 package com.careerwatch.backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -11,7 +14,6 @@ import lombok.*;
 @Entity
 @Table(name = "RESUMES")
 public class Resume {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -24,7 +26,7 @@ public class Resume {
     @Column(name = "PRESENTATION")
     private String presentation;
 
+    @NotNull
     @Column(name = "RESUME_NAME")
     private String resumeName;
-
 }
