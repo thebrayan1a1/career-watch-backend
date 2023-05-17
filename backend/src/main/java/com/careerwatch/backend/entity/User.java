@@ -7,6 +7,8 @@ import lombok.*;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -15,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 @Setter
 @Entity
 @Table(name = "USERS")
-public class user {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +37,9 @@ public class user {
 
     @Column(name = "PROFILE_IMG")
     private String profileImage;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Resume> resumes = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {
