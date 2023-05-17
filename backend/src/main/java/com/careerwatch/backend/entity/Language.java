@@ -12,6 +12,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
+@Table(name = "LANGUAGES")
 public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

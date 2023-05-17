@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table(name = "EDUCATIONS")
 public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
