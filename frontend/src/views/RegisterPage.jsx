@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+
 export default function RegisterPage() {
   const {
     register,
@@ -16,41 +18,45 @@ export default function RegisterPage() {
   const password = watch("password");
 
   return (
-    <>
+    <div className="mx-4 mt-8">
       <form
-        className="grid grid-cols-2 gap-y-7 gap-x-2"
+        className="grid grid-cols-2 gap-y-7 text-base"
         onSubmit={handleSubmit(submitData)}
       >
-        <h4 className="col-span-2 font-bold">Crear cuenta</h4>
+        <h4 className="col-span-2 font-bold ">Crear cuenta</h4>
 
         {/* Input nombre */}
         <div className="col-span-1 relative">
           <input
-            className="p-2 rounded border border-[#D4D4D8]"
+            className="py-2 pl-2 rounded border border-[#D4D4D8]"
             {...register("firstName", {
               required: "Nombre requerido",
               maxLength: 20,
             })}
             placeholder="Nombre"
           ></input>
-          <span className="absolute top-10 -bottom-7 left-1">
-            {errors?.firstName?.message}
-          </span>
+          {errors.firstName && (
+            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+              {errors?.firstName?.message}
+            </span>
+          )}
         </div>
 
         {/* Input apellido */}
         <div className="col-span-1 relative">
           <input
-            className="p-2 rounded border border-[#D4D4D8]"
+            className="py-2 pl-2 rounded border border-[#D4D4D8]"
             {...register("lastName", {
               required: "Apellido requerido",
               maxLength: 20,
             })}
             placeholder="Apellido"
           />
-          <span className="absolute top-10 -bottom-7 left-1">
-            {errors?.lastName?.message}
-          </span>
+          {errors.lastName && (
+            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+              {errors?.lastName?.message}
+            </span>
+          )}
         </div>
 
         {/* Input email */}
@@ -64,9 +70,11 @@ export default function RegisterPage() {
             )}
             placeholder="E-mail"
           />
-          <span className="absolute top-10 -bottom-7 left-1">
-            {errors?.email?.message}
-          </span>
+          {errors.email && (
+            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+              {errors?.email?.message}
+            </span>
+          )}
         </div>
 
         {/* Input contraseña */}
@@ -88,9 +96,11 @@ export default function RegisterPage() {
             })}
             placeholder="Contraseña"
           />
-          <span className="absolute top-10 -bottom-7 left-1">
-            {errors?.password?.message}
-          </span>
+          {errors.password && (
+            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+              {errors?.password?.message}
+            </span>
+          )}
         </div>
 
         {/* Input confirmar contraseña */}
@@ -114,19 +124,39 @@ export default function RegisterPage() {
             })}
             placeholder="Confirmar contraseña"
           />
-          <span className="absolute top-10 -bottom-7 left-1">
-            {errors?.confirmPassword?.message}
-          </span>
+          {errors.confirmPassword && (
+            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+              {errors?.confirmPassword?.message}
+            </span>
+          )}
         </div>
 
         <button
-          className="col-span-2 rounded bg-[#6D28D9] text-white"
+          className="col-span-2 rounded bg-[#6D28D9] text-white h-10"
           type="submit"
           value="submit"
         >
           Crear cuenta
         </button>
       </form>
-    </>
+      <div className="my-4">
+        <p>
+          ¿Ya tienes cuenta?{" "}
+          <Link to={"login"}>
+            <span className="font-bold underline text-[#232323]">
+              Inicia sesión
+            </span>
+          </Link>
+        </p>
+        <p>
+          Al crear la cuenta aceptas nuestros{" "}
+          <Link to={""}>
+            <span className="font-bold underline text-[#232323]">
+              Términos y condiciones
+            </span>
+          </Link>
+        </p>
+      </div>
+    </div>
   );
 }
