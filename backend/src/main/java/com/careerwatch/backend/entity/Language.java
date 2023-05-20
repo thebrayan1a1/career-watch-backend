@@ -28,5 +28,5 @@ public class Language {
     private ELanguage language;
 
     @Column(name = "LANGUAGE_LEVEL")
-    private ELanguageLevel languageLevel;
+    private ELanguage languageLevel;
 }

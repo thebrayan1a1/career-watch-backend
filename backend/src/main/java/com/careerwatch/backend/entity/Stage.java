@@ -31,6 +31,4 @@ public class Stage {
 
     @OneToMany(mappedBy = "stage", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Application> applications = new ArrayList<>();
-
-
 }
