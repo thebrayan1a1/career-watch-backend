@@ -18,7 +18,7 @@ public class ApplicationDto {
     private List<TaskDto> tasks;
     private String position;
     private String description;
-    private String application;
+    private String applicationDate;
     private String company;
     private String resumeName;
 }

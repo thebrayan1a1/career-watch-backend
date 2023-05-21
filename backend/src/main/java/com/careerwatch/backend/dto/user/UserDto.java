@@ -1,8 +1,8 @@
 package com.careerwatch.backend.dto.user;
 
-import com.careerwatch.backend.entity.Application;
-import com.careerwatch.backend.entity.Resume;
-import com.careerwatch.backend.entity.Stage;
+import com.careerwatch.backend.dto.application.ApplicationDto;
+import com.careerwatch.backend.dto.application.StageDto;
+import com.careerwatch.backend.dto.resume.ResumeDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,8 +21,7 @@ public class UserDto {
     private String email;
     private String clientSince;
     private String profileImage;
-    private List<Resume> resumes;
-    private List<Stage> stages;
-    private List<Application> applications;
-
+    private List<ResumeDto> resumes;
+    private List<StageDto> stages;
+    private List<ApplicationDto> applications;
 }

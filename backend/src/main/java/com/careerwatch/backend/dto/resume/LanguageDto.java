@@ -1,7 +1,5 @@
 package com.careerwatch.backend.dto.resume;
 
-import com.careerwatch.backend.enumeration.ELanguage;
-import com.careerwatch.backend.enumeration.ELanguageLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

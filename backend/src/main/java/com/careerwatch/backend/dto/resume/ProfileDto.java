@@ -1,6 +1,15 @@
-package com.careerwatch.backend.dto.resume;\
+package com.careerwatch.backend.dto.resume;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@Builder
 public class ProfileDto {
     private Long id;
     private Long resumeId;
