@@ -2,12 +2,10 @@ package com.careerwatch.backend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 
@@ -20,7 +18,7 @@ public class ProfileController {
     
 
     @GetMapping
-    public ResponseEntity<List<ProfileDto>> getAllProfiles() throws JsonProcessingException {
+    public ResponseEntity<List<ProfileDto>> getAllprofiles() throws JsonProcessingException {
         return ResponseEntity.ok(profileService.getAllProfiles());
     }
 
@@ -30,7 +28,7 @@ public class ProfileController {
     }
 
     @PutMapping("/{profileId}")
-    public ResponseEntity<ProfileDto> updateProfile(@PathVariable Long profileId, @ModelAttribute ProfileDto profileDto) throws JsonProcessingException {
+    public ResponseEntity<profileDto> updateProfile(@PathVariable Long profileId, @RequestBody ProfileDto profileDto) throws JsonProcessingException {
         return ResponseEntity.ok(profileService.updateProfile(profileId, profileDto));
     }
 

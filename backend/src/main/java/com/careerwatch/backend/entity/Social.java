@@ -25,5 +25,4 @@ public class Social {
     @NotNull
     @Column(name = "LINK")
     private String link;
-
 }

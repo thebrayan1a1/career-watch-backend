@@ -41,7 +41,7 @@ public class Application {
     private String description;
 
     @Column(name = "APPLICATION_DATE")
-    private String application;
+    private String applicationDate;
 
     @Column(name = "COMPANY")
     private String company;
