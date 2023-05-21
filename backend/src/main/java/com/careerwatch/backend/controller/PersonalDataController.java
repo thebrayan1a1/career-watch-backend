@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/personalDatas")
-public class personalData {
+public class PersonalDataController {
     
     private final personalDataService personalDataService;
     
