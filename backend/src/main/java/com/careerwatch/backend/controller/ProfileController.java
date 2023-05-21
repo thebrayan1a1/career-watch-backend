@@ -28,7 +28,7 @@ public class ProfileController {
     }
 
     @PutMapping("/{profileId}")
-    public ResponseEntity<profileDto> updateProfile(@PathVariable Long profileId, @ModelAttribute profileDto profileDto) throws JsonProcessingException {
+    public ResponseEntity<profileDto> updateProfile(@PathVariable Long profileId, @RequestBody ProfileDto profileDto) throws JsonProcessingException {
         return ResponseEntity.ok(profileService.updateProfile(profileId, profileDto));
     }
 
@@ -37,5 +37,4 @@ public class ProfileController {
         profileService.deleteProfile(profileId);
         return ResponseEntity.noContent().build();
     }
-
 }
