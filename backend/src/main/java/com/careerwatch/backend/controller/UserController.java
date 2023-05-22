@@ -1,6 +1,7 @@
 package com.careerwatch.backend.controller;
 
 
+import com.careerwatch.backend.dto.user.UserDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<UserDto> updateUser(@PathVariable Long userId, @ModelAttribute UserDto userDto) throws JsonProcessingException {
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long userId, @RequestBody UserDto userDto) throws JsonProcessingException {
         return ResponseEntity.ok(userService.updateUser(userId, userDto));
     }
 
