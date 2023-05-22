@@ -36,7 +36,7 @@ export default function RegisterPage() {
             placeholder="Nombre"
           ></input>
           {errors.firstName && (
-            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+            <span className="absolute text-xs font-bold flex top-10 -bottom-7 right-1 text-[#EF4444]">
               {errors?.firstName?.message}
             </span>
           )}
@@ -53,7 +53,7 @@ export default function RegisterPage() {
             placeholder="Apellido"
           />
           {errors.lastName && (
-            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+            <span className="absolute text-xs font-bold top-10 -bottom-7 right-1 text-[#EF4444]">
               {errors?.lastName?.message}
             </span>
           )}
@@ -71,7 +71,7 @@ export default function RegisterPage() {
             placeholder="E-mail"
           />
           {errors.email && (
-            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+            <span className="absolute text-xs font-bold top-10 -bottom-7 right-1 text-[#EF4444]">
               {errors?.email?.message}
             </span>
           )}
@@ -97,7 +97,7 @@ export default function RegisterPage() {
             placeholder="Contraseña"
           />
           {errors.password && (
-            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+            <span className="absolute text-xs font-bold top-10 -bottom-7 right-1 text-[#EF4444]">
               {errors?.password?.message}
             </span>
           )}
@@ -125,7 +125,7 @@ export default function RegisterPage() {
             placeholder="Confirmar contraseña"
           />
           {errors.confirmPassword && (
-            <span className="absolute text-xs bg-[#FEE2E2] font-bold flex rounded border border-[#D4D4D8] px-2 top-10 -bottom-7 right-1 text-[#EF4444]">
+            <span className="absolute text-xs font-bold top-10 -bottom-7 right-1 text-[#EF4444]">
               {errors?.confirmPassword?.message}
             </span>
           )}
