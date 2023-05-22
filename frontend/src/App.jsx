@@ -3,7 +3,8 @@ import './styles/App.css'
 import Landing from './views/Landing'
 import {Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
-import Login  from './views/Login'
+import Boards from './views/Board'
+import Login from './views/Login'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route  element={<Landing/>} path='/'/>
       <Route element={<Login/>} path='login'/>
+      <Route element={<Boards/>} path='board'/>
     </Routes>
   </>
   )
