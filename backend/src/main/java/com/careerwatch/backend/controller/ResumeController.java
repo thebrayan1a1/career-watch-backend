@@ -1,5 +1,7 @@
 package com.careerwatch.backend.controller;
 
+import com.careerwatch.backend.dto.resume.ResumeDto;
+import com.careerwatch.backend.service.ResumeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("api/v1/resumes")
 public class ResumeController {
+
+
+    private final ResumeService resumeService;
+
+
+
     @GetMapping("/{resumeId}")
     public ResponseEntity<ResumeDto> getResumeById( @PathVariable Long resumeId) throws JsonProcessingException {
         return ResponseEntity.ok(resumeService.getResumeById(resumeId));
@@ -35,6 +43,11 @@ public class ResumeController {
     public ResponseEntity<Void> deleteResume(@PathVariable Long userId, @PathVariable Long resumeId) throws JsonProcessingException {
         userService.deleteResume(userId, resumeId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{userId}/resumes")
+    public ResponseEntity<List<ResumeDto>> getAllResumesByUserId(@PathVariable Long userId) throws JsonProcessingException {
+        return ResponseEntity.ok(userService.getAllResumesByUserId(userId));
     }
 
 };

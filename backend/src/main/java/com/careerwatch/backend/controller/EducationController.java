@@ -1,9 +1,11 @@
 package com.careerwatch.backend.controller;
 
+import com.careerwatch.backend.dto.resume.EducationDto;
+import com.careerwatch.backend.dto.resume.UpdateEducationDto;
+import com.careerwatch.backend.service.EducationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,21 +15,25 @@ import java.util.List;
 @RequestMapping("/api/v1/educations")
 public class EducationController {
     
-    private final educationService educationService;
-    
+    private final EducationService educationService;
 
-    @GetMapping
-    public ResponseEntity<List<educationDto>> getAllEducations() throws JsonProcessingException {
-        return ResponseEntity.ok(educationService.getAllEducations());
+
+    @PostMapping("/{resumeId}")
+    public ResponseEntity<EducationDto> createEducation(@RequestBody EducationDto educationDto) throws JsonProcessingException {
+        return ResponseEntity.ok(educationService.createEducation(educationDto));
+    }
+    @GetMapping("/{resumeId}")
+    public ResponseEntity<List<EducationDto>> getAllEducations(@PathVariable Long resumeId) throws JsonProcessingException {
+        return ResponseEntity.ok(educationService.getAllEducations(resumeId));
     }
 
     @GetMapping("/{educationId}")
-    public ResponseEntity<educationDto> getEducationById(@PathVariable Long educationId) throws JsonProcessingException  {
-        return ResponseEntity.ok(educationService.getEducationById(educationId));
+    public ResponseEntity<EducationDto> getEducationById(@PathVariable Long educationId) throws JsonProcessingException  {
+        return ResponseEntity.ok(educationService.getEducation(educationId));
     }
 
     @PutMapping("/{educationId}")
-    public ResponseEntity<educationDto> updateEducation(@PathVariable Long educationId, @ModelAttribute educationDto educationDto) throws JsonProcessingException {
+    public ResponseEntity<EducationDto> updateEducation(@PathVariable Long educationId, @RequestBody UpdateEducationDto educationDto) throws JsonProcessingException {
         return ResponseEntity.ok(educationService.updateEducation(educationId, educationDto));
     }
 
