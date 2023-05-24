@@ -11,7 +11,10 @@ import com.careerwatch.backend.mapper.resume.ResumeDtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 @Component
 @RequiredArgsConstructor
@@ -46,4 +49,15 @@ public class UserDtoMapper {
                 .applications(applicationsDtoList)
                 .build();
     }
+
+    public List<UserDto> entitiesToDtoList(List<User> users ) {
+
+        List<UserDto> listUsersDto = new ArrayList<>(emptyList());
+
+        for (User user : users) {
+            listUsersDto.add(entityToDto(user));
+        }
+        return listUsersDto;
+    }
+
 }
