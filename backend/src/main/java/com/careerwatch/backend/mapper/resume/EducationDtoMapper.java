@@ -5,6 +5,11 @@ import com.careerwatch.backend.entity.Education;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Collections.emptyList;
+
 @Component
 @RequiredArgsConstructor
 public class EducationDtoMapper {
@@ -30,5 +35,14 @@ public class EducationDtoMapper {
                 .dateEnd(educationDto.getDateEnd())
                 .description(educationDto.getDescription())
                 .build();
+    }
+
+    public List<EducationDto> entitiesToDtoList(List<Education> educations){
+        List<EducationDto> listEducationsDto = new ArrayList<>(emptyList());
+
+        for (Education education : educations) {
+            listEducationsDto.add(entityToDto(education));
+        }
+        return listEducationsDto;
     }
 }
