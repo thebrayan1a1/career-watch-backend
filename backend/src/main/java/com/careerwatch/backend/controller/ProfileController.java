@@ -1,13 +1,12 @@
 package com.careerwatch.backend.controller;
 
+import com.careerwatch.backend.dto.resume.ProfileDto;
+import com.careerwatch.backend.dto.resume.UpdateProfileDto;
+import com.careerwatch.backend.service.ProfileService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
 
 @RestController
 @RequiredArgsConstructor
@@ -15,26 +14,21 @@ import java.util.List;
 public class ProfileController {
     
     private final ProfileService profileService;
-    
 
-    @GetMapping
-    public ResponseEntity<List<ProfileDto>> getAllprofiles() throws JsonProcessingException {
-        return ResponseEntity.ok(profileService.getAllProfiles());
+    @GetMapping("/{resumeId}")
+    public ResponseEntity<ProfileDto> getProfileByResumeId(@PathVariable Long resumeId) throws JsonProcessingException {
+        return ResponseEntity.ok(profileService.getProfileByResumeId(resumeId));
     }
 
-    @GetMapping("/{profileId}")
-    public ResponseEntity<ProfileDto> getProfileById(@PathVariable Long profileId) throws JsonProcessingException  {
-        return ResponseEntity.ok(profileService.getProfileById(profileId));
+    @PutMapping("/{resumeId}")
+    public ResponseEntity<ProfileDto> updateProfileByResumeId(@PathVariable Long resumeId,
+                                                              @RequestBody UpdateProfileDto profileDto) throws JsonProcessingException {
+        return ResponseEntity.ok(profileService.updateProfileByResumeId(resumeId, profileDto));
     }
 
-    @PutMapping("/{profileId}")
-    public ResponseEntity<profileDto> updateProfile(@PathVariable Long profileId, @RequestBody ProfileDto profileDto) throws JsonProcessingException {
-        return ResponseEntity.ok(profileService.updateProfile(profileId, profileDto));
-    }
-
-    @DeleteMapping("/{profileId}")
-    public ResponseEntity<Void> deleteProfile(@PathVariable Long profileId) throws JsonProcessingException {
-        profileService.deleteProfile(profileId);
+    @DeleteMapping("/{resumeId}")
+    public ResponseEntity<Void> deleteProfileByResumeId(@PathVariable Long resumeId) throws JsonProcessingException {
+        profileService.deleteProfileByResumeId(resumeId);
         return ResponseEntity.noContent().build();
     }
 }
