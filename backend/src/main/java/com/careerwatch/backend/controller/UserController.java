@@ -1,12 +1,11 @@
 package com.careerwatch.backend.controller;
 
-
+import com.careerwatch.backend.dto.user.UpdateUserDto;
 import com.careerwatch.backend.dto.user.UserDto;
+import com.careerwatch.backend.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -32,7 +31,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<UserDto> updateUser(@PathVariable Long userId, @RequestBody UserDto userDto) throws JsonProcessingException {
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long userId, @RequestBody UpdateUserDto userDto) throws JsonProcessingException {
         return ResponseEntity.ok(userService.updateUser(userId, userDto));
     }
 
@@ -40,10 +39,5 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long userId) throws JsonProcessingException {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping("/{userId}/resumes")
-    public ResponseEntity<List<ResumeDto>> getAllResumesByUserId(@PathVariable Long userId) throws JsonProcessingException {
-        return ResponseEntity.ok(userService.getAllResumesByUserId(userId));
     }
 }
