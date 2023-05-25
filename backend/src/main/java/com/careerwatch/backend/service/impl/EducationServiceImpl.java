@@ -52,11 +52,11 @@ public class EducationServiceImpl implements EducationService {
         Education education = educationRepository.findById(educationId)
                 .orElseThrow(()-> new NotFoundException("Error: education" + educationId + " not found"));
 
-        educationDto.getTitle().ifPresent(educationDto::setTitle);
-        educationDto.getInstitution().ifPresent(educationDto::setInstitution);
-        educationDto.getDateStart().ifPresent(educationDto::setDateStart);
-        educationDto.getDateEnd().ifPresent(educationDto::setDateEnd);
-        educationDto.getDescription().ifPresent(educationDto::setDescription);
+        educationDto.getTitle().ifPresent(education::setTitle);
+        educationDto.getInstitution().ifPresent(education::setInstitution);
+        educationDto.getDateStart().ifPresent(education::setDateStart);
+        educationDto.getDateEnd().ifPresent(education::setDateEnd);
+        educationDto.getDescription().ifPresent(education::setDescription);
 
         educationRepository.save(education);
         return mapper.entityToDto(education);
@@ -67,7 +67,6 @@ public class EducationServiceImpl implements EducationService {
     public void deleteEducation(Long educationId) {
         if (educationRepository.existsById(educationId))
             throw new NotFoundException("Error: Education " + educationId + " not found");
-
         educationRepository.deleteById(educationId);
     }
 }
