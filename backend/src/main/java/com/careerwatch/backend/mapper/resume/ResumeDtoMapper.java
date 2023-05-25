@@ -3,7 +3,7 @@ package com.careerwatch.backend.mapper.resume;
 import com.careerwatch.backend.dto.resume.experience.ExperienceDto;
 import com.careerwatch.backend.dto.resume.language.LanguageDto;
 import com.careerwatch.backend.dto.resume.profile.ProfileDto;
-import com.careerwatch.backend.dto.resume.ResumeDto;
+import com.careerwatch.backend.dto.resume.resume.ResumeDto;
 import com.careerwatch.backend.entity.Resume;
 import com.careerwatch.backend.entity.User;
 import com.careerwatch.backend.repository.*;
@@ -60,5 +60,11 @@ public class ResumeDtoMapper {
                 .presentation(resumeDto.getPresentation())
                 .resumeName(resumeDto.getResumeName())
                 .build();
+    }
+
+    public List<ResumeDto> entitiesToDtoList(List<Resume> resumes) {
+        return resumes.stream()
+                .map(this::entityToDto)
+                .toList();
     }
 }

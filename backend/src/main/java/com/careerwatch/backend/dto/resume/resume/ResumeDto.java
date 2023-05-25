@@ -1,4 +1,4 @@
-package com.careerwatch.backend.dto.resume;
+package com.careerwatch.backend.dto.resume.resume;
 
 import com.careerwatch.backend.dto.resume.education.EducationDto;
 import com.careerwatch.backend.dto.resume.experience.ExperienceDto;
