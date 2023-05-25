@@ -52,4 +52,15 @@ public class StageDtoMapper {
                 .applications(applications)
                 .build();
     }
+
+    public List<StageDto> entitiesToDtoList(List<Stage> stages ) {
+
+        List<StageDto> listStagesDto = new ArrayList<>();
+
+        for (Stage stage : stages) {
+            listStagesDto.add(entityToDto(stage));
+        }
+        return listStagesDto;
+    }
+
 }
