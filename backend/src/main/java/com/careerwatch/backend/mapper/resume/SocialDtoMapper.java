@@ -3,6 +3,10 @@ package com.careerwatch.backend.mapper.resume;
 import com.careerwatch.backend.dto.resume.SocialDto;
 import com.careerwatch.backend.entity.Social;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,4 +27,10 @@ public class SocialDtoMapper {
                 .build();
     }
 
+    // entitiesToDtos
+    public List<SocialDto> entitiesToDtoList(List<Social> socials) {
+        return socials.stream()
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
+    }
 }
