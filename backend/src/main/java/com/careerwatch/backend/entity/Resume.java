@@ -26,7 +26,6 @@ public class Resume {
     @Column(name = "PRESENTATION")
     private String presentation;
 
-    @NotNull
     @Column(name = "RESUME_NAME")
     private String resumeName;
 }

@@ -12,31 +12,36 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Collections.emptyList;
 
 @Component
 @RequiredArgsConstructor
 public class UserDtoMapper {
-    private ResumeDtoMapper resumeDtoMapper;
-    private StageDtoMapper stageDtoMapper;
-    private ApplicationDtoMapper applicationDtoMapper;
-    public UserDto entityToDto(User user){
+    private final ResumeDtoMapper resumeDtoMapper;
+    private final StageDtoMapper stageDtoMapper;
+    private final ApplicationDtoMapper applicationDtoMapper;
+    public UserDto entityToDto(User user) {
 
-        List<ResumeDto> resumeDtoList = user.getResumes()
-                .stream().map(
-                        resumeDtoMapper::entityToDto)
+        List<ResumeDto> resumeDtoList = Optional.ofNullable(user.getResumes())
+                .orElse(emptyList())
+                .stream()
+                .map(resumeDtoMapper::entityToDto)
                 .toList();
 
-        List<StageDto> stageDtoList = user.getStages()
-                .stream().map(
-                        stageDtoMapper::entityToDto)
+        List<StageDto> stageDtoList = Optional.ofNullable(user.getStages())
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(stageDtoMapper::entityToDto)
                 .toList();
 
-        List<ApplicationDto> applicationsDtoList = user.getApplications()
-                .stream().map(
-                        applicationDtoMapper::entityToDto)
+        List<ApplicationDto> applicationsDtoList = Optional.ofNullable(user.getApplications())
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(applicationDtoMapper::entityToDto)
                 .toList();
 
         return UserDto.builder()
@@ -49,7 +54,6 @@ public class UserDtoMapper {
                 .applications(applicationsDtoList)
                 .build();
     }
-
     public List<UserDto> entitiesToDtoList(List<User> users ) {
 
         List<UserDto> listUsersDto = new ArrayList<>(emptyList());

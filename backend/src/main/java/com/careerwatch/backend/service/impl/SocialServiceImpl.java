@@ -1,15 +1,13 @@
 package com.careerwatch.backend.service.impl;
 
 import com.careerwatch.backend.entity.Profile;
-import com.careerwatch.backend.entity.Resume;
 import com.careerwatch.backend.exception.NotFoundException;
 import com.careerwatch.backend.repository.ProfileRepository;
-import com.careerwatch.backend.repository.ResumeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import com.careerwatch.backend.dto.resume.SocialDto;
-import com.careerwatch.backend.dto.resume.UpdateSocialDto;
+import com.careerwatch.backend.dto.resume.social.SocialDto;
+import com.careerwatch.backend.dto.resume.social.UpdateSocialDto;
 import com.careerwatch.backend.entity.Social;
 import com.careerwatch.backend.mapper.resume.SocialDtoMapper;
 import com.careerwatch.backend.repository.SocialRepository;

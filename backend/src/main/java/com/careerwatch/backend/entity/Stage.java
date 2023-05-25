@@ -22,10 +22,7 @@ public class Stage {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
-    @NotNull
     private User user;
-
-    @NotNull
     @Column(name = "STAGE_NAME")
     private String stageName;
 

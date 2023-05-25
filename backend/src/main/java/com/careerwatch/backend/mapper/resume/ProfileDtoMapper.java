@@ -1,7 +1,7 @@
 package com.careerwatch.backend.mapper.resume;
 
 import com.careerwatch.backend.dto.resume.profile.ProfileDto;
-import com.careerwatch.backend.dto.resume.SocialDto;
+import com.careerwatch.backend.dto.resume.social.SocialDto;
 import com.careerwatch.backend.entity.Profile;
 import com.careerwatch.backend.entity.Resume;
 import com.careerwatch.backend.entity.Social;
