@@ -1,13 +1,14 @@
 package com.careerwatch.backend.service;
 
-import com.careerwatch.backend.dto.resume.ExperienceDto;
+import com.careerwatch.backend.dto.resume.experience.ExperienceDto;
 
 import java.util.List;
 
 public interface ExperienceService {
 
-    List<ExperienceDto> getAllExperiences (Long ResumeId);
-    ExperienceDto getExperience (Long experienceId);
-    ExperienceDto updateExperience (Long experienceId, ExperienceDto experience);
-    void deleteExperience (Long experienceId);
+    ExperienceDto createExperience (ExperienceDto experienceDto);
+    List<ExperienceDto> getAllExperiencesByResumeId (Long ResumeId);
+    ExperienceDto getExperienceById (Long experienceId);
+    ExperienceDto updateExperienceById (Long experienceId, ExperienceDto experienceDto);
+    void deleteExperienceById (Long experienceId);
 }
