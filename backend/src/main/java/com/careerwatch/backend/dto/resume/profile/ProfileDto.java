@@ -1,5 +1,5 @@
 package com.careerwatch.backend.dto.resume.profile;
-import com.careerwatch.backend.dto.resume.SocialDto;
+import com.careerwatch.backend.dto.resume.social.SocialDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

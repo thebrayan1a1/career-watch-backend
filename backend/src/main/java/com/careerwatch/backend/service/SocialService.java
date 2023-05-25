@@ -2,8 +2,8 @@ package com.careerwatch.backend.service;
 
 import java.util.List;
 
-import com.careerwatch.backend.dto.resume.SocialDto;
-import com.careerwatch.backend.dto.resume.UpdateSocialDto;
+import com.careerwatch.backend.dto.resume.social.SocialDto;
+import com.careerwatch.backend.dto.resume.social.UpdateSocialDto;
 
 public interface SocialService {
     

@@ -18,11 +18,9 @@ public class Social {
     @Column(name = "ID")
     private Long id;
 
-    @NotNull
     @Column(name = "TITLE")
     private String title;
 
-    @NotNull
     @Column(name = "LINK")
     private String link;
 }

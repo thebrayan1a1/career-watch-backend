@@ -19,11 +19,11 @@ public class Language {
     @Column(name = "ID")
     private Long id;
 
-    @NotNull
+
     @Column(name = "RESUME_ID")
     private Long resumeId;
 
-    @NotNull
+
     @Column(name = "LANGUAGE")
     private ELanguage language;
 

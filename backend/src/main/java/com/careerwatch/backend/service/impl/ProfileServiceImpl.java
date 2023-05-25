@@ -1,7 +1,7 @@
 package com.careerwatch.backend.service.impl;
 
 import com.careerwatch.backend.dto.resume.profile.ProfileDto;
-import com.careerwatch.backend.dto.resume.SocialDto;
+import com.careerwatch.backend.dto.resume.social.SocialDto;
 import com.careerwatch.backend.dto.resume.profile.UpdateProfileDto;
 import com.careerwatch.backend.entity.Profile;
 import com.careerwatch.backend.entity.Social;

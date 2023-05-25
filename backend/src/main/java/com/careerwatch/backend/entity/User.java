@@ -23,11 +23,9 @@ public class User {
     @Column(name = "ID")
     private Long Id;
 
-    @NotNull
     @Column(name = "EMAIL")
     private String email;
 
-    @NotNull
     @Column(name = "PASSWORD")
     private String password;
 
