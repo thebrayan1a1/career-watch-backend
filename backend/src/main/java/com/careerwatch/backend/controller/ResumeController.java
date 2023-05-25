@@ -1,6 +1,7 @@
 package com.careerwatch.backend.controller;
 
-import com.careerwatch.backend.dto.resume.ResumeDto;
+import com.careerwatch.backend.dto.resume.resume.ResumeDto;
+import com.careerwatch.backend.dto.resume.resume.UpdateResumeDto;
 import com.careerwatch.backend.service.ResumeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
@@ -14,40 +15,31 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("api/v1/resumes")
 public class ResumeController {
-
-
     private final ResumeService resumeService;
 
-
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<ResumeDto>> getAllResumesByUserId(@PathVariable Long userId) {
+        return ResponseEntity.ok(resumeService.getAllResumesByUserId(userId));
+    }
 
     @GetMapping("/{resumeId}")
     public ResponseEntity<ResumeDto> getResumeById( @PathVariable Long resumeId) throws JsonProcessingException {
         return ResponseEntity.ok(resumeService.getResumeById(resumeId));
     }
 
-    public ResponseEntity<List<ResumeDto> getAllResumes() {
-        return ResponseEntity.ok(resumeService.getAll());
-    }
-
-    @PostMapping("/")
-    public ResponseEntity<ResumeDto> createResume(@PathVariable Long userId, @RequestBody ResumeDto resumeDto) throws JsonProcessingException {
-        return ResponseEntity.status(HttpStatus.CREATED).body(resumeService.createResume(userId, resumeDto));
+    @PostMapping()
+    public ResponseEntity<ResumeDto> createResume(@RequestBody ResumeDto resumeDto) throws JsonProcessingException {
+        return ResponseEntity.status(HttpStatus.CREATED).body(resumeService.createResume(resumeDto));
     }
 
     @PutMapping("/{resumeId}")
-    public ResponseEntity<ResumeDto> updateResume(@PathVariable Long resumeId, @ModelAttribute ResumeDto resumeDto) throws JsonProcessingException {
-        return ResponseEntity.ok(resumeService.updateResume(userId, resumeId, resumeDto));
+    public ResponseEntity<ResumeDto> updateResumeById(@PathVariable Long resumeId, @RequestBody UpdateResumeDto resumeDto) throws JsonProcessingException {
+        return ResponseEntity.ok(resumeService.updateResumeById(resumeId, resumeDto));
     }
 
     @DeleteMapping("/{resumeId}")
-    public ResponseEntity<Void> deleteResume(@PathVariable Long userId, @PathVariable Long resumeId) throws JsonProcessingException {
-        userService.deleteResume(userId, resumeId);
+    public ResponseEntity<Void> deleteResumeById(@PathVariable Long resumeId) throws JsonProcessingException {
+        resumeService.deleteResumeById(resumeId);
         return ResponseEntity.noContent().build();
     }
-
-    @GetMapping("/{userId}/resumes")
-    public ResponseEntity<List<ResumeDto>> getAllResumesByUserId(@PathVariable Long userId) throws JsonProcessingException {
-        return ResponseEntity.ok(userService.getAllResumesByUserId(userId));
-    }
-
 };
