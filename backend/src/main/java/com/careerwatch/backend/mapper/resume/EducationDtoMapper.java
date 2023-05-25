@@ -1,6 +1,6 @@
 package com.careerwatch.backend.mapper.resume;
 
-import com.careerwatch.backend.dto.resume.EducationDto;
+import com.careerwatch.backend.dto.resume.education.EducationDto;
 import com.careerwatch.backend.entity.Education;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

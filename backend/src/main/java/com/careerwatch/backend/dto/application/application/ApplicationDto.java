@@ -1,5 +1,6 @@
-package com.careerwatch.backend.dto.application;
+package com.careerwatch.backend.dto.application.application;
 
+import com.careerwatch.backend.dto.application.task.TaskDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

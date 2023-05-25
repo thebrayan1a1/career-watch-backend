@@ -1,14 +1,14 @@
 package com.careerwatch.backend.mapper.application;
 
-import com.careerwatch.backend.dto.application.TaskDto;
+import com.careerwatch.backend.dto.application.task.TaskDto;
 import com.careerwatch.backend.entity.Application;
 import com.careerwatch.backend.entity.Task;
 import com.careerwatch.backend.repository.ApplicationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -35,12 +35,9 @@ public class TaskDtoMapper {
                 .build();
     }
 
-    public List<TaskDto> entitiesToDtoList (List<Task> tasks){
-
-        List<TaskDto> listDtos = new ArrayList<>();
-        for (Task task : tasks){
-            listDtos.add(entityToDto(task));
-        }
-        return listDtos;
+    public List<TaskDto> entitiesToDtoList(List<Task> tasks) {
+        return tasks.stream()
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
     }
 }

@@ -1,13 +1,13 @@
 package com.careerwatch.backend.controller;
 
+import com.careerwatch.backend.dto.application.application.ApplicationDto;
+import com.careerwatch.backend.dto.application.application.UpdateApplicationDto;
+import com.careerwatch.backend.service.ApplicationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 
@@ -18,10 +18,14 @@ public class ApplicationController {
 
     private final ApplicationService applicationService;
 
+    @PostMapping()
+    public ResponseEntity<ApplicationDto> createApplication(@RequestBody ApplicationDto applicationDto) throws JsonProcessingException {
+        return ResponseEntity.ok(applicationService.createApplication(applicationDto));
+    }
 
-    @GetMapping
-    public ResponseEntity<List<ApplicationDto>> getAllApplications() throws JsonProcessingException {
-        return ResponseEntity.ok(applicationService.getAllApplications());
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<ApplicationDto>> getAllApplicationsById(@PathVariable Long userId) throws JsonProcessingException {
+        return ResponseEntity.ok(applicationService.getAllApplicationsByUserId(userId));
     }
 
     @GetMapping("/{applicationId}")
@@ -30,13 +34,18 @@ public class ApplicationController {
     }
 
     @PutMapping("/{applicationId}")
-    public ResponseEntity<ApplicationDto> updateApplication(@PathVariable Long applicationId, @ModelAttribute ApplicationDto applicationDto) throws JsonProcessingException {
-        return ResponseEntity.ok(applicationService.updateApplication(applicationId, applicationDto));
+    public ResponseEntity<ApplicationDto> updateApplicationById(@PathVariable Long applicationId, @RequestBody UpdateApplicationDto applicationDto) throws JsonProcessingException {
+        return ResponseEntity.ok(applicationService.updateApplicationById(applicationId, applicationDto));
+    }
+
+    @PutMapping("/{stageId}/{applicationId}")
+    public ResponseEntity<ApplicationDto> updateStageApplication(@PathVariable Long stageId, @PathVariable Long applicationId) throws JsonProcessingException {
+        return ResponseEntity.ok(applicationService.updateStageApplication(stageId, applicationId));
     }
 
     @DeleteMapping("/{applicationId}")
     public ResponseEntity<Void> deleteApplication(@PathVariable Long applicationId) throws JsonProcessingException {
-        applicationService.deleteApplication(applicationId);
+        applicationService.deleteApplicationById(applicationId);
         return ResponseEntity.noContent().build();
     }
     

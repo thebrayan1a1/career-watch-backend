@@ -1,7 +1,7 @@
 package com.careerwatch.backend.service.impl;
 
-import com.careerwatch.backend.dto.resume.EducationDto;
-import com.careerwatch.backend.dto.resume.UpdateEducationDto;
+import com.careerwatch.backend.dto.resume.education.EducationDto;
+import com.careerwatch.backend.dto.resume.education.UpdateEducationDto;
 import com.careerwatch.backend.entity.Education;
 import com.careerwatch.backend.exception.CantBeEmptyException;
 import com.careerwatch.backend.exception.NotFoundException;

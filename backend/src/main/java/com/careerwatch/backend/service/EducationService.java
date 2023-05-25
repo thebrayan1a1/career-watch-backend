@@ -1,7 +1,7 @@
 package com.careerwatch.backend.service;
 
-import com.careerwatch.backend.dto.resume.EducationDto;
-import com.careerwatch.backend.dto.resume.UpdateEducationDto;
+import com.careerwatch.backend.dto.resume.education.EducationDto;
+import com.careerwatch.backend.dto.resume.education.UpdateEducationDto;
 
 import java.util.List;
 

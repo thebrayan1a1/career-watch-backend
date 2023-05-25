@@ -1,25 +1,23 @@
 package com.careerwatch.backend.service.impl;
 
-import com.careerwatch.backend.dto.application.ApplicationDto;
-import com.careerwatch.backend.dto.application.StageDto;
-import com.careerwatch.backend.dto.application.UpdateStageDto;
+import com.careerwatch.backend.dto.application.application.ApplicationDto;
+import com.careerwatch.backend.dto.application.stage.StageDto;
+import com.careerwatch.backend.dto.application.stage.UpdateStageDto;
 import com.careerwatch.backend.entity.Application;
 import com.careerwatch.backend.entity.Stage;
+import com.careerwatch.backend.entity.User;
 import com.careerwatch.backend.exception.NotFoundException;
 import com.careerwatch.backend.mapper.application.StageDtoMapper;
 import com.careerwatch.backend.repository.ApplicationRepository;
 import com.careerwatch.backend.repository.StageRepository;
+import com.careerwatch.backend.repository.UserRepository;
 import com.careerwatch.backend.service.StageService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,12 +26,15 @@ public class StageServiceImpl implements StageService {
     private final ApplicationRepository applicationRepository;
     private final StageRepository stageRepository;
     private final StageDtoMapper mapper;
-    
+    private final UserRepository userRepository;
+
 
     @Transactional
     @Override
-    public List<StageDto> getAllStages() {
-        return mapper.entitiesToDtoList(stageRepository.findAll());
+    public List<StageDto> getAllStagesByUserId(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(()-> new NotFoundException("Error: User with id " + userId + " not found"));
+        return mapper.entitiesToDtoList(user.getStages());
     }
 
     @Transactional
@@ -51,16 +52,18 @@ public class StageServiceImpl implements StageService {
                 new RuntimeException("Error: stage not found"));
 
         stageDto.getStageName().ifPresent(stage::setStageName);
-        
-        List<Application> applicationList = new java.util.ArrayList<>(Collections.emptyList());
 
-        if (!stageDto.getApplications().isEmpty()){
-            for (ApplicationDto applicationDto : stageDto.getApplications()) {
-                Application application = applicationRepository.findById(applicationDto.getId())
-                        .orElseThrow(() -> new NotFoundException("Error: application not found"));
-                applicationList.add(application);
-            }
-        stage.setApplications(applicationList);
+        if (stageDto.getApplications().isPresent()) {
+            List<Application> applicationList = stageDto.getApplications()
+                    .orElseThrow(() -> new NotFoundException("Error: application not found"))
+                    .stream()
+                    .map(ApplicationDto::getId)
+                    .map(applicationRepository::findById)
+                    .filter(Optional::isPresent)
+                    .map(Optional::get)
+                    .toList();
+
+            stage.setApplications(applicationList);
         }
 
         stageRepository.save(stage);
