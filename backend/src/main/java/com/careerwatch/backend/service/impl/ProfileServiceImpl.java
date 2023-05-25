@@ -11,6 +11,7 @@ import com.careerwatch.backend.mapper.resume.SocialDtoMapper;
 import com.careerwatch.backend.repository.ProfileRepository;
 import com.careerwatch.backend.repository.ResumeRepository;
 import com.careerwatch.backend.service.ProfileService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ public class ProfileServiceImpl implements ProfileService{
     private final ProfileRepository profileRepository;
     private final SocialDtoMapper socialMapper;
 
+    @Transactional
     @Override
     public ProfileDto getProfileByResumeId(Long resumeId) {
         if (!resumeRepository.existsById(resumeId))
@@ -33,7 +35,7 @@ public class ProfileServiceImpl implements ProfileService{
         return mapper.entityToDto(profileRepository.findByResumeId(resumeId)
                 .orElseThrow(()-> new NotFoundException("Error: profile in resume id " + resumeId + " not found")));
     }
-
+    @Transactional
     @Override
     public ProfileDto updateProfileByResumeId(Long resumeId, UpdateProfileDto profileDto) {
         Profile profile = profileRepository.findByResumeId(resumeId)
@@ -57,10 +59,10 @@ public class ProfileServiceImpl implements ProfileService{
         }
 
         profileRepository.save(profile);
-        return mapper.entityToDto(profileRepository.findByResumeId(resumeId)
-                .orElseThrow(()-> new RuntimeException("Something failed to save updated profile")));
+        return mapper.entityToDto(profile);
     }
 
+    @Transactional
     @Override
     public void deleteProfileByResumeId(Long resumeId) {
         Profile profile = profileRepository.findByResumeId(resumeId)

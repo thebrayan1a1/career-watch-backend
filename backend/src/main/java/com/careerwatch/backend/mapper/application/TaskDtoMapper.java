@@ -7,6 +7,9 @@ import com.careerwatch.backend.repository.ApplicationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class TaskDtoMapper {
@@ -30,5 +33,14 @@ public class TaskDtoMapper {
                 .title(taskDto.getTitle())
                 .description(taskDto.getDescription())
                 .build();
+    }
+
+    public List<TaskDto> entitiesToDtoList (List<Task> tasks){
+
+        List<TaskDto> listDtos = new ArrayList<>();
+        for (Task task : tasks){
+            listDtos.add(entityToDto(task));
+        }
+        return listDtos;
     }
 }
