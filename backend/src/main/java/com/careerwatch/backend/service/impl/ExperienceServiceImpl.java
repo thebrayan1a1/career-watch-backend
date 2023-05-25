@@ -5,8 +5,6 @@ import com.careerwatch.backend.entity.Experience;
 import com.careerwatch.backend.exception.NotFoundException;
 import com.careerwatch.backend.mapper.resume.ExperienceDtoMapper;
 import com.careerwatch.backend.repository.ExperienceRepository;
-import com.careerwatch.backend.repository.ResumeRepository;
-import com.careerwatch.backend.repository.UserRepository;
 import com.careerwatch.backend.service.ExperienceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
