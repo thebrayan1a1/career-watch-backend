@@ -1,14 +1,12 @@
 package com.careerwatch.backend.controller;
 
-
+import com.careerwatch.backend.dto.resume.experience.ExperienceDto;
+import com.careerwatch.backend.service.ExperienceService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 
@@ -18,11 +16,15 @@ import java.util.List;
 public class ExperienceController {
     
     private final ExperienceService experienceService;
-    
 
-    @GetMapping
-    public ResponseEntity<List<ExperienceDto>> getAllExperiences() throws JsonProcessingException {
-        return ResponseEntity.ok(experienceService.getAllExperiences());
+    @PostMapping
+    public ResponseEntity<ExperienceDto> createExperience(@RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
+        return ResponseEntity.ok(experienceService.createExperience(experienceDto));
+    }
+
+    @GetMapping("/{resumeId}")
+    public ResponseEntity<List<ExperienceDto>> getAllExperiencesByResumeId(@PathVariable Long resumeId) throws JsonProcessingException {
+        return ResponseEntity.ok(experienceService.getAllExperiencesByResumeId(resumeId));
     }
 
     @GetMapping("/{experienceId}")
@@ -31,14 +33,13 @@ public class ExperienceController {
     }
 
     @PutMapping("/{experienceId}")
-    public ResponseEntity<ExperienceDto> updateExperience(@PathVariable Long experienceId, @ModelAttribute ExperienceDto experienceDto) throws JsonProcessingException {
-        return ResponseEntity.ok(experienceService.updateExperience(experienceId, experienceDto));
+    public ResponseEntity<ExperienceDto> updateExperienceById(@PathVariable Long experienceId, @RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
+        return ResponseEntity.ok(experienceService.updateExperienceById(experienceId, experienceDto));
     }
 
     @DeleteMapping("/{experienceId}")
     public ResponseEntity<Void> deleteExperience(@PathVariable Long experienceId) throws JsonProcessingException {
-        experienceService.deleteExperience(experienceId);
+        experienceService.deleteExperienceById(experienceId);
         return ResponseEntity.noContent().build();
     }
-    
 }
