@@ -1,4 +1,4 @@
-package com.careerwatch.backend.dto.resume;
+package com.careerwatch.backend.dto.resume.language;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

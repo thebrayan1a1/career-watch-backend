@@ -1,12 +1,15 @@
 package com.careerwatch.backend.mapper.resume;
 
 
-import com.careerwatch.backend.dto.resume.LanguageDto;
+import com.careerwatch.backend.dto.resume.language.LanguageDto;
 import com.careerwatch.backend.entity.Language;
 import com.careerwatch.backend.enumeration.ELanguage;
 import com.careerwatch.backend.enumeration.ELanguageLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -21,7 +24,7 @@ public class LanguageDtoMapper {
                 .build();
     }
 
-    public Language dtoToLanguage(LanguageDto languageDto) {
+    public Language dtoToEntity(LanguageDto languageDto) {
 
         ELanguage language = switch (languageDto.getLanguage().toLowerCase()) {
             case "english" -> ELanguage.ENGLISH;
@@ -46,5 +49,11 @@ public class LanguageDtoMapper {
                 .language(language)
                 .languageLevel(languageLvl)
                 .build();
+    }
+
+    public List<LanguageDto> entitiesToDtoList(List<Language> languages) {
+        return languages.stream()
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
     }
 }

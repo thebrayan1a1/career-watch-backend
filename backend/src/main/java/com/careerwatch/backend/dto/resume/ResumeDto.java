@@ -1,6 +1,8 @@
 package com.careerwatch.backend.dto.resume;
 
 import com.careerwatch.backend.dto.resume.education.EducationDto;
+import com.careerwatch.backend.dto.resume.experience.ExperienceDto;
+import com.careerwatch.backend.dto.resume.language.LanguageDto;
 import com.careerwatch.backend.dto.resume.profile.ProfileDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
