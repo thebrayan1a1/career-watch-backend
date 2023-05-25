@@ -1,7 +1,7 @@
 package com.careerwatch.backend.controller;
 
-import com.careerwatch.backend.dto.resume.EducationDto;
-import com.careerwatch.backend.dto.resume.UpdateEducationDto;
+import com.careerwatch.backend.dto.resume.education.EducationDto;
+import com.careerwatch.backend.dto.resume.education.UpdateEducationDto;
 import com.careerwatch.backend.service.EducationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;

@@ -1,5 +1,6 @@
-package com.careerwatch.backend.dto.application;
+package com.careerwatch.backend.dto.application.stage;
 
+import com.careerwatch.backend.dto.application.application.ApplicationDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

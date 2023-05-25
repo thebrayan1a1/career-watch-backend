@@ -1,7 +1,7 @@
 package com.careerwatch.backend.dto.user;
 
-import com.careerwatch.backend.dto.application.ApplicationDto;
-import com.careerwatch.backend.dto.application.StageDto;
+import com.careerwatch.backend.dto.application.application.ApplicationDto;
+import com.careerwatch.backend.dto.application.stage.StageDto;
 import com.careerwatch.backend.dto.resume.ResumeDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

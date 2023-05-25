@@ -1,7 +1,7 @@
 package com.careerwatch.backend.controller;
 
-import com.careerwatch.backend.dto.resume.ProfileDto;
-import com.careerwatch.backend.dto.resume.UpdateProfileDto;
+import com.careerwatch.backend.dto.resume.profile.ProfileDto;
+import com.careerwatch.backend.dto.resume.profile.UpdateProfileDto;
 import com.careerwatch.backend.service.ProfileService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;

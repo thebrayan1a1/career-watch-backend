@@ -1,7 +1,7 @@
 package com.careerwatch.backend.mapper.application;
 
-import com.careerwatch.backend.dto.application.ApplicationDto;
-import com.careerwatch.backend.dto.application.StageDto;
+import com.careerwatch.backend.dto.application.application.ApplicationDto;
+import com.careerwatch.backend.dto.application.stage.StageDto;
 import com.careerwatch.backend.entity.Application;
 import com.careerwatch.backend.entity.Stage;
 import com.careerwatch.backend.entity.User;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -53,14 +54,10 @@ public class StageDtoMapper {
                 .build();
     }
 
-    public List<StageDto> entitiesToDtoList(List<Stage> stages ) {
-
-        List<StageDto> listStagesDto = new ArrayList<>();
-
-        for (Stage stage : stages) {
-            listStagesDto.add(entityToDto(stage));
-        }
-        return listStagesDto;
+    public List<StageDto> entitiesToDtoList(List<Stage> stages) {
+        return stages.stream()
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
     }
 
 }

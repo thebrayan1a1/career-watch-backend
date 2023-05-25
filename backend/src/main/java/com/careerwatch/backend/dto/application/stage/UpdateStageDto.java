@@ -1,5 +1,6 @@
-package com.careerwatch.backend.dto.application;
+package com.careerwatch.backend.dto.application.stage;
 
+import com.careerwatch.backend.dto.application.application.ApplicationDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class UpdateStageDto {
 
     private String stageName;
-    private List<Appli
+    private List<ApplicationDto> applications;
 
     public Optional<String> getStageName() {
         return Optional.ofNullable(stageName);

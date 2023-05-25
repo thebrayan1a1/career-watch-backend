@@ -1,7 +1,7 @@
 package com.careerwatch.backend.controller;
 
-import com.careerwatch.backend.dto.application.TaskDto;
-import com.careerwatch.backend.dto.application.UpdateTaskDto;
+import com.careerwatch.backend.dto.application.task.TaskDto;
+import com.careerwatch.backend.dto.application.task.UpdateTaskDto;
 import com.careerwatch.backend.service.TaskService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;

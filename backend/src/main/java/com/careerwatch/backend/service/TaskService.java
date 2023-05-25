@@ -1,6 +1,6 @@
 package com.careerwatch.backend.service;
-import com.careerwatch.backend.dto.application.TaskDto;
-import com.careerwatch.backend.dto.application.UpdateTaskDto;
+import com.careerwatch.backend.dto.application.task.TaskDto;
+import com.careerwatch.backend.dto.application.task.UpdateTaskDto;
 
 import java.util.List;
 

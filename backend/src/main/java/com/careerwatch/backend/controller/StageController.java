@@ -1,14 +1,13 @@
 package com.careerwatch.backend.controller;
 
+import com.careerwatch.backend.dto.application.stage.StageDto;
+import com.careerwatch.backend.dto.application.stage.UpdateStageDto;
 import com.careerwatch.backend.service.StageService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 
@@ -18,11 +17,11 @@ import java.util.List;
 public class StageController {
     
     private final StageService stageService;
-    
 
-    @GetMapping
-    public ResponseEntity<List<StageDto>> getAllStages() throws JsonProcessingException {
-        return ResponseEntity.ok(stageService.getAllStages());
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<StageDto>> getAllStagesById(@PathVariable Long userId) throws JsonProcessingException {
+        return ResponseEntity.ok(stageService.getAllStagesByUserId(userId));
     }
 
     @GetMapping("/{stageId}")
@@ -31,7 +30,7 @@ public class StageController {
     }
 
     @PutMapping("/{stageId}")
-    public ResponseEntity<StageDto> updateStage(@PathVariable Long stageId, @ModelAttribute StageDto stageDto) throws JsonProcessingException {
+    public ResponseEntity<StageDto> updateStage(@PathVariable Long stageId, @RequestBody UpdateStageDto stageDto) throws JsonProcessingException {
         return ResponseEntity.ok(stageService.updateStage(stageId, stageDto));
     }
 
@@ -40,5 +39,4 @@ public class StageController {
         stageService.deleteStage(stageId);
         return ResponseEntity.noContent().build();
     }
-    
 }

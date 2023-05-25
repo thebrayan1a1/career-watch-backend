@@ -1,14 +1,15 @@
 package com.careerwatch.backend.service;
 
-import com.careerwatch.backend.dto.application.ApplicationDto;
-import com.careerwatch.backend.dto.resume.LanguageDto;
+import com.careerwatch.backend.dto.application.application.ApplicationDto;
+import com.careerwatch.backend.dto.application.application.UpdateApplicationDto;
 
 import java.util.List;
 
 public interface ApplicationService {
-    List<ApplicationDto> getAllApplications (Long userId);
-    ApplicationDto getApplication (Long applicationId);
+    ApplicationDto createApplication (ApplicationDto applicationDto);
+    List<ApplicationDto> getAllApplicationsByUserId (Long userId);
+    ApplicationDto getApplicationById (Long applicationId);
     ApplicationDto updateStageApplication (Long stageId, Long applicationId);
-    ApplicationDto updateApplication (Long applicationId, ApplicationDto application);
-    void deleteApplication(Long applicationId);
+    ApplicationDto updateApplicationById (Long applicationId, UpdateApplicationDto application);
+    void deleteApplicationById(Long applicationId);
 }

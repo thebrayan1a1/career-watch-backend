@@ -1,15 +1,13 @@
 package com.careerwatch.backend.service.impl;
 
-import com.careerwatch.backend.dto.application.TaskDto;
-import com.careerwatch.backend.dto.application.UpdateTaskDto;
+import com.careerwatch.backend.dto.application.task.TaskDto;
+import com.careerwatch.backend.dto.application.task.UpdateTaskDto;
 import com.careerwatch.backend.entity.Application;
 import com.careerwatch.backend.entity.Task;
-import com.careerwatch.backend.entity.User;
 import com.careerwatch.backend.exception.NotFoundException;
 import com.careerwatch.backend.mapper.application.TaskDtoMapper;
 import com.careerwatch.backend.repository.ApplicationRepository;
 import com.careerwatch.backend.repository.TaskRepository;
-import com.careerwatch.backend.repository.UserRepository;
 import com.careerwatch.backend.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.careerwatch.backend.mapper.application;
 
-import com.careerwatch.backend.dto.application.ApplicationDto;
-import com.careerwatch.backend.dto.application.TaskDto;
+import com.careerwatch.backend.dto.application.application.ApplicationDto;
+import com.careerwatch.backend.dto.application.task.TaskDto;
 import com.careerwatch.backend.entity.Application;
 import com.careerwatch.backend.entity.Stage;
 import com.careerwatch.backend.entity.Task;
@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -62,4 +63,11 @@ public class ApplicationDtoMapper {
                 .resumeName(applicationDto.getResumeName())
                 .build();
     }
+
+    public List<ApplicationDto> entityToDtoList(List<Application> applications) {
+        return applications.stream()
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
+    }
+
 }
