@@ -46,11 +46,9 @@ export default function Boards() {
           ></img>
           <h2>Tablero</h2>
         </div>
-        <Link to={"login"}>
           <button className="w-[90vw] h-[6vh] bg-[#6D28D9] text-white font-normal">
             Nuevo tablero
-          </button>
-        </Link>
+          </button>       
         {boards.map((board,index)=>(
 
           <div className="m-5">
